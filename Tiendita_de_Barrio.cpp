@@ -2,16 +2,21 @@
 using namespace std;
 
 int menu;
-int contador_ventas;
 int cantidad;
-float precio;
-float resumen_precio;
-float subtotal;
-float Descuento;
-float IVA;
-float Cambio;
-float Total;
-float Pago;
+double precio;
+double subtotal;
+double Descuento;
+double IVA;
+double Cambio;
+double Total;
+double Pago;
+double total_vendido;
+double venta_mayor;
+double venta_menor;
+double total_descuentos;
+int contador_ventas;
+double promediov;
+
 
 int main ()
 {
@@ -39,7 +44,7 @@ int main ()
                     {
                         if (precio > 0)
                         {
-                            resumen_precio = resumen_precio + precio;
+                            
                             cout << "Ingrese la cantidad del producto: ";
                             cin >> cantidad;
                             while (cantidad < 1 || cantidad > 100)
@@ -94,6 +99,25 @@ int main ()
                 cout << "Pago: " << Pago << "\n";
                 cout << "Cambio: " << Cambio << "\n";
                 cout << "Gracias por su compra" << "\n";
+                contador_ventas = contador_ventas + 1;
+                total_vendido = total_vendido + Total;
+                total_descuentos = total_descuentos + Descuento;
+                if (contador_ventas == 1)
+                {
+                    venta_menor = Total;
+                    venta_mayor = Total;
+                }
+                else 
+                {
+                    if (venta_mayor < Total)
+                    {
+                        venta_mayor = Total; 
+                    }
+                    if (venta_menor > Total)
+                    {
+                        venta_menor = Total;
+                    }
+                }
             }
             else 
             {
@@ -104,10 +128,20 @@ int main ()
             }
             case 2:
             {
-                cout << "Resumen parcial de ventas: \n";
-                cout << "Precio del producto: " << resumen_precio << "\n";
-                cout << "Cantidad del producto: " << cantidad << "\n";
-                cout << "Subtotal vendido: " << subtotal << "\n";
+                if (contador_ventas > 0)
+                {
+                    promediov = total_vendido / contador_ventas;
+                    cout << "Ventas hechas en el dia: \n" << contador_ventas << "\n";
+                    cout << "Total vendido en el dia: \n" << total_vendido << "\n";
+                    cout << "Venta mayor del dia: \n" << venta_mayor <<  "\n";
+                    cout << "Venta menor del dia: \n" << venta_menor << "\n";
+                    cout << "Promedio por venta: \n" << promediov << "\n";
+                    cout << "Descuentos totales aplicados: \n" << total_descuentos << "\n";
+                } 
+                else 
+                {
+                    cout << "No se han registrado ventas \n";
+                }
                 break;
             }
             case 3:
