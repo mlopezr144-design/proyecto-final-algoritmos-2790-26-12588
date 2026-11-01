@@ -45,3 +45,56 @@ Tambien me sugirio cambiar mis variables float por double porque uno de los calc
 El unico cambio que rechace fue minimo y era un mensaje que se mostraba al no validar una condicion y era para las ventas, me insistia que colocara que no se habian registrado productos pero se me hizo mas practico dejarlo en que no se habian registrado ventas.
 
 ## Hito 3 
+
+Casos de prueba brindados por el documento:
+
+Caso 1: Venta de 99.99 (sin descuento) ![alt text](image.png)
+        Venta de 100 (limite del 5%) ![alt text](image-1.png)
+Caso 2: Venta de 500 (limite del 10%) ![alt text](image-2.png)
+Caso 3: Cantidad 0, 101, precio negativo y opcion de menu 9 ![alt text](image-4.png) 
+Caso 4: Resumen del dia sin ventas ![alt text](image-5.png)
+Caso 5: Pago menor al total  ![alt text](image-6.png)
+
+## Casos de prueba sugeridos por la IA:
+
+Prueba 1: resumen sin ventas
+
+Qué probé: elegir la opción 2 antes de registrar cualquier venta.
+Esperado: el mensaje “No se han registrado ventas”, sin dividir entre cero.
+Obtenido: correcto.
+Qué probé después: elegir la opción 1 y poner 0 como primer precio.
+Esperado: “No se registraron ventas” y sin pedir pago.
+Obtenido: correcto. Al volver a la opción 2, sigue sin contar ventas.
+
+Imagen de demostracion: ![alt text](image-8.png)
+
+Prueba 2: serie de ventas y resumen del día
+
+Venta A: 
+-Producto: de Q50, cantidad 2, pago de Q110. 
+-Esperado: descuento Q5, IVA Q11.40, total Q106.40, cambio Q3.60. 
+-Resumen esperado: 1 venta, total vendido 106.4, mayor y menor 106.4, descuentos 5.
+
+Imagen de demostracion: ![alt text](image-10.png)
+
+Venta B: 
+-Producto de Q20, cantidad 1, pago de Q25. 
+-Esperado: sin descuento, IVA Q2.40, total Q22.40, cambio Q2.60. 
+-Resumen esperado: 2 ventas, total 128.8, mayor 106.4, menor 22.4, promedio 64.4.
+
+Imagen de demostracion: ![alt text](image-11.png)
+
+Venta C: 
+-Producto de Q100, cantidad 6, primero pago de Q600 y luego de Q610. 
+-Esperado: descuento Q60, IVA Q64.80, total Q604.80. Con Q600 el programa vuelve a pedir el pago, y con Q610 el cambio es Q5.20. 
+-Resumen esperado: 3 ventas, total 733.6, mayor 604.8, menor 22.4, promedio 244.533, descuentos 65.
+
+Imagen de demostracion: ![alt text](image-12.png)
+
+Prueba 3: límites del descuento
+
+Con una venta de un solo producto de cantidad 1: precio Q99 da total Q110.88 (sin descuento), precio Q100 da Q106.40 (5 %) y precio Q500 da Q504 (10 %). 
+
+Imagen de demostracion (sin descuento): ![alt text](image-13.png) 
+Imagenes de demostracion (5%): ![alt text](image-14.png)
+Imagenes de demostracion (10%): ![alt text](image-15.png)

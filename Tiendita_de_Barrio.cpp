@@ -25,7 +25,7 @@ int main ()
         cout << "\nBuen dia, Que desea hacer? \n";
         cout << "1. Registrar Venta\n";
         cout << "2. Ver resumen parcial del dia\n";
-        cout << "3. Cerrar caja y salir\n";
+        cout << "3. Cerrar caja y salir\n"
         cin >> menu;
         switch (menu)
         {
